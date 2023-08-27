@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.budgetapp.ui.signin.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/signInToSummary"
+            app:destination="@id/summaryFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/signInToSignUp"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.budgetapp.ui.signup.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/signUpToSignIn"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/signUpToSummary"
+            app:destination="@id/summaryFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.example.budgetapp.ui.summary.SummaryFragment"
+        android:label="fragment_summary"
+        tools:layout="@layout/fragment_summary">
+        <action
+            android:id="@+id/summaryToSignIn"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/summaryFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/summaryToExpense"
+            app:destination="@id/expenseFragment" />
+        <action
+            android:id="@+id/summaryToIncome"
+            app:destination="@id/incomeFragment" />
+        <action
+            android:id="@+id/summaryToAddOrEdit"
+            app:destination="@id/addOrEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expenseFragment"
+        android:name="com.example.budgetapp.ui.expense.ExpenseFragment"
+        android:label="fragment_expense"
+        tools:layout="@layout/fragment_expense">
+        <action
+            android:id="@+id/expenseToIncome"
+            app:destination="@id/incomeFragment" />
+        <action
+            android:id="@+id/expenseToSummary"
+            app:destination="@id/summaryFragment" />
+        <action
+            android:id="@+id/expenseToAddOrEdit"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/expenseToSignIn"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.example.budgetapp.ui.income.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income">
+        <action
+            android:id="@+id/incomeToSummary"
+            app:destination="@id/summaryFragment" />
+        <action
+            android:id="@+id/incomeToAddOrEdit"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/incomeToSignIn"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addOrEditFragment"
+        android:name="com.example.budgetapp.ui.addoredit.AddOrEditFragment"
+        android:label="fragment_add_or_edit"
+        tools:layout="@layout/fragment_add_or_edit">
+        <action
+            android:id="@+id/addOrEditToSummary"
+            app:destination="@id/summaryFragment" />
+        <argument
+            android:name="incomeExpense"
+            android:defaultValue="@null"
+            app:argType="com.example.budgetapp.data.model.IncomeExpense"
+            app:nullable="true" />
+        <action
+            android:id="@+id/addOrEditToExpense"
+            app:destination="@id/expenseFragment" />
+    </dialog>
+</navigation>
